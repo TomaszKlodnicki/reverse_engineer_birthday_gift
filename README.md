@@ -38,3 +38,13 @@ GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 ```
 
 And it was compiled on ubuntu.
+
+## Step 2
+
+To get info about build arch lets exectue `file` command
+
+```bash
+file challenge > file.txt
+```
+
+Now we know that it's for `x86` and there is no debug info commpiled inside.
