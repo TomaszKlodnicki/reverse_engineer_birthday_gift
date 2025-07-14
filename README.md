@@ -16,3 +16,25 @@
 ## About
 
 I received this program as a birthday gift from a friend of mine. The challenge is to reverse engineer it and uncover the hidden password. The program was created by [Nefretus](https://github.com/Nefretus). Thanks!
+
+## Setp 1
+
+```bash
+strings challange > string.txt
+```
+
+Let’s see the hardcoded strings inside this file. There’s no password for sure, but what do we have here?
+
+```
+przekaz haslo jako pierwszy command line argument 
+Sza sza sza!!!
+No niestety byku
+```
+
+Now we now what we need to get as output sza sza sza!!! :D
+
+```
+GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+```
+
+And it was compiled on ubuntu.
