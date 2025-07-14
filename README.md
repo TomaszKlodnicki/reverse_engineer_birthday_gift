@@ -48,3 +48,15 @@ file challenge > file.txt
 ```
 
 Now we know that it's for `x86` and there is no debug info commpiled inside.
+
+## Step 3
+
+Let's go to `Ghidra`.
+
+![import fail](ghidra_import_fail.png "fail to import required libs")
+
+I encountered an issue loading libraries from the x86 architecture because I’m using an Apple ARM machine. To resolve this, I Located the missing libraries on my Linux x86 machine, copied them to ./libs/ and imported them into Ghidra, which resolved the errors.
+
+![import success](resolve_ok.png "import success")
+
+Next, I searched for the entry point `libc.so.6::__libc_start_main` and locate `main()` function.
