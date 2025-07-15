@@ -8,6 +8,26 @@
             <STATE NAME="SHOW_TABLE" TYPE="boolean" VALUE="false" />
         </SAVE_STATE>
     </PROJECT_DATA_XML_NAME>
+    <PROJECT_DATA_XML_NAME NAME="LOADER_OPTIONS">
+        <SAVE_STATE>
+            <ARRAY NAME="Library Search Paths" TYPE="string">
+                <A VALUE="/Users/tomaszklodnicki/Documents/GitHub/reverse_engineer_birthday_gift/libs" />
+                <A VALUE="." />
+                <A VALUE="/System/Library/dyld/dyld_shared_cache_arm64e" />
+                <A VALUE="/System/Library/dyld/dyld_shared_cache_x86_64" />
+                <A VALUE="/System/Library/dyld/dyld_shared_cache_x86_64h" />
+                <A VALUE="/System/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_arm64e" />
+                <A VALUE="/System/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64" />
+                <A VALUE="/System/Cryptexes/OS/System/Library/dyld/dyld_shared_cache_x86_64h" />
+                <A VALUE="/Users/tomaszklodnicki/Library/Java/Extensions" />
+                <A VALUE="/Library/Java/Extensions" />
+                <A VALUE="/Network/Library/Java/Extensions" />
+                <A VALUE="/System/Library/Java/Extensions" />
+                <A VALUE="/usr/lib/java" />
+            </ARRAY>
+            <STATE NAME="Project Library Search Folder" TYPE="string" VALUE="/" />
+        </SAVE_STATE>
+    </PROJECT_DATA_XML_NAME>
     <TOOL_MANAGER ACTIVE_WORKSPACE="Workspace">
         <WORKSPACE NAME="Workspace" ACTIVE="true" />
     </TOOL_MANAGER>
