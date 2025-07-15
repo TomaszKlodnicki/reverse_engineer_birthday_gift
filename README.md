@@ -85,7 +85,7 @@ Then I've labeled string check function:
       _ZNSolsEPFRSoS_E(uVar2,_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_);
     }
 ```
-I've also found function where this hidden pass is generated
+I've also found function where this hidden password is generated
 
 ```cpp
     create_string(&hidden_pass);
@@ -97,7 +97,7 @@ I've also found function where this hidden pass is generated
     edit_pass((char *)&hidden_pass,(char *)&string_two,(char *)&string_one); // generate function
 ```
 
-here is decompiled generating section:
+Here is decompiled password generating section:
 
 ```cpp
   for (iterator = 0; (&string_two_data)[iterator] != '\0'; iterator = iterator + 1) {
@@ -109,3 +109,33 @@ here is decompiled generating section:
   }
 ```
 
+`string_two` and `str_one` are bytes from which password is created. The function `_ZNKSsixEj` appears to be some kind of `operator[]`.
+
+```cpp
+{0x18, 0xd6, 0x15, 0xca, 0xfa, 0x77} //string one data
+```
+
+## Step 4
+
+To get the password, we need to recreate the code logic. I've copied the bytes from `string_one` and `string_two` into C-style arrays and implemented this `for` loop. The password encoder logic is in `resolve.cpp`.
+
+```cpp
+  for (int i = 0; i < sizeof(array_two); i++) {
+
+    uint8_t temp_char = array_one[i % sizeof(array_one)];
+    size_t string_two_len = sizeof(array_two);
+
+    uint8_t new_char = array_two[i % string_two_len];
+    pass += static_cast<char>(temp_char ^ new_char);
+  }
+```
+
+Let's gooooo!
+
+``` bash
+g++ resolve.cpp resolve
+./resolve
+ROZPYKANE_PRZEZ_ZAWODOWCA_GRATULACJE_SZEFIE_NAGRODA_W_NAJWYZSZEJ_POLCE_NA_WARSZTACIE
+./challenge ROZPYKANE_PRZEZ_ZAWODOWCA_GRATULACJE_SZEFIE_NAGRODA_W_NAJWYZSZEJ_POLCE_NA_WARSZTACIE
+Sza sza sza!!!
+```
